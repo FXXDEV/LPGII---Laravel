@@ -1,8 +1,4 @@
 @extends('layouts.app')
-<?php
-use App\State;
-$state = State::all();
-?>
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -22,11 +18,9 @@ $state = State::all();
                     {!! Form::open(['url' => "/states/$states->id", 'method' => 'put']) !!}
                         
                         {{ Form::label('name', 'Nome') }}
-                        {{ Form::text('name', $states->name) }}
+                        {{ Form::text('nameState', $states->nameState) }}
 
-                        <br /><br />
-
-
+                        <br />
                         {{ Form::label('sig', 'Sigla') }}
                         {{ Form::text('sigla',$states->sigla) }}
 

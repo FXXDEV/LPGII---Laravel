@@ -17,8 +17,8 @@ class StateController extends Controller
 
     public function index()
     {
-        $States = State::all();
-        return view('States/index', ['states' => $States]);
+        $states = State::all();
+        return view('States/index', ['states' => $states]);
     }
 
     public function create() 
@@ -29,12 +29,9 @@ class StateController extends Controller
     public function store(Request $request) 
     {
         $p = new State;
-        $p->name = $request->input('nameState');
+        $p->nameState = $request->input('nameState');
         $p->sigla = $request->input('sigla');
-        //$p->name = $request->input('name');
-
-
-        
+       
         if ($p->save()) {
             \Session::flash('status', 'Estado cadastrado com sucesso.');
             return redirect('/states');
@@ -45,14 +42,14 @@ class StateController extends Controller
     }
 
     public function edit($id) {
-        $States = State::findOrFail($id);
+        $states = State::findOrFail($id);
 
-        return view('states.edit', ['states' => $States]);
+        return view('states.edit', ['states' => $states]);
     }
 
     public function update(Request $request, $id) {
         $p = State::findOrFail($id);
-        $p->name = $request->input('name');
+        $p->nameState = $request->input('nameState');
         $p->sigla = $request->input('sigla');
 
         

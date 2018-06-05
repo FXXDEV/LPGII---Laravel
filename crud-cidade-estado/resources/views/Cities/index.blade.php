@@ -31,7 +31,7 @@
                                 <td>{{ $p->id }}</td>
                                 <td>{{ $p->name }}</td>
                                 <td>{{ $p->hab }}</td>
-                                <td>{{ $p->state }}</td>
+                                <td>{{ $p->nameState }}</td>
                                 <td>
                                     <a href="/cities/{{ $p->id }}/edit" class="btn btn-warning">Editar</a>
 

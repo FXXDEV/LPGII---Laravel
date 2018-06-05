@@ -28,7 +28,7 @@
                         @foreach($states as $p)
                             <tr>
                                 <td>{{ $p->id }}</td>
-                                <td>{{ $p->name }}</td>
+                                <td>{{ $p->nameState }}</td>
                                 <td>{{ $p->sigla }}</td>
 
                                 <td>

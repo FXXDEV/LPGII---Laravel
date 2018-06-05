@@ -1,17 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\City;
 use App\State;
 
 class CityController extends Controller
 {
-
-
-    
-    public function __construct()
+        public function __construct()
     {
         $this->middleware('auth');
     }
@@ -19,7 +16,10 @@ class CityController extends Controller
     public function index()
     {
         $cities = City::all();
-
+        $cities = DB::table('cities')
+        ->join('states', 'cities.state_id', '=', 'states.id')
+        ->select('cities.id','cities.name' ,'states.nameState', 'cities.hab')
+        ->get();
         return view('cities/index', ['cities' => $cities]);
     }
 
@@ -34,10 +34,8 @@ class CityController extends Controller
     {
         $p = new City;
         $p->name = $request->input('nameCity');
-        $p->state = $request->get('nameState');
+        $p->state_id = $request->input('state_id');
         $p->hab = $request->get('hab');
-        $p->state_id = 0;
-        $p->state_type= 0;
         
         if ($p->save()) {
             \Session::flash('status', 'Cidade cadastrada com sucesso.');
@@ -58,7 +56,7 @@ class CityController extends Controller
     public function update(Request $request, $id) {
         $p = City::findOrFail($id);
         $p->name = $request->input('nameCity');
-        $p->state = $request->input('nameState');
+        $p->state_id = $request->input('state_id');
         $p->hab = $request->input('hab');
         
         if ($p->save()) {

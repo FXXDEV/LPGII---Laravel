@@ -62,12 +62,12 @@
                                     <a class="dropdown-item" href="/states"
                                     onclick="event.preventDefault();
                                                   document.getElementById('edit-form').submit();">
-                                     {{ __('states') }}
+                                     {{ __('States') }}
                                     </a>
                                     <a class="dropdown-item" href="/cities"
                                     onclick="event.preventDefault();
                                                 document.getElementById('get-form').submit();">
-                                    {{ __('cities') }}
+                                    {{ __('Cities') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

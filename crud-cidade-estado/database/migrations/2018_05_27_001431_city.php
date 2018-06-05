@@ -17,8 +17,8 @@ class City extends Migration
         Schema::create('cities', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->unique();
-            $table->morphs('state');
-            $table->string('state')->references('name')->on('states');
+            $table->integer('state_id')->unsigned();
+            $table->foreign('state_id')->references('id')->on('states')->onDelete('cascade');
             $table->string('hab');
             $table->timestamps();
         });

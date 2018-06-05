@@ -23,22 +23,21 @@
 
                         <br />
                         
-                        {{ Form::label('hab','Quantidade de habitantes',['class' => 'col-sm-2 col-form-label col-form-label-sm']) }}
-                        {{ Form::text('hab'),$city->hab,['class' => 'col-sm-2 col-form-label col-form-label-sm'] }}
+                        {{ Form::label('habt','Quantidade de habitantes',['class' => 'col-sm-2 col-form-label col-form-label-sm']) }}
+                        {{ Form::text('hab',$city->hab,['class' => 'col-sm-2 col-form-label col-form-label-sm']) }}
                        
                         
-                       <div class="form-group row">
-                                {{ Form::label('estado', 'Selecione um estado:', ['class' => 'col-sm-2 col-form-label col-form-label-sm']) }}
+                        <div class="form-group row">
+                                {{ Form::label('state', 'Selecione um estado:', ['class' => 'col-sm-2 col-form-label col-form-label-sm']) }}
                                 <div class="col-sm-10">
-                                        <select name="nameState">';
-                                                <option>Selecione...</option>
+                                        <select name="state_id">';
+                                                
                                                 @foreach($states as $s)
-                                                <option value="{{$s->name}}"> {{$s->name}} </option>
+                                                <option value="{{$s->id}}"> {{$s->nameState}} </option>
                                                 @endforeach
                                         </select>
-                                        
-                                 </div>
-                        </div>  
+                                </div>
+                            </div>  
                 
 
                         <br/>
