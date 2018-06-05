@@ -30,6 +30,7 @@ class StateController extends Controller
     {
         $p = new State;
         $p->name = $request->input('nameState');
+        $p->sigla = $request->input('sigla');
         //$p->name = $request->input('name');
 
 
@@ -52,6 +53,7 @@ class StateController extends Controller
     public function update(Request $request, $id) {
         $p = State::findOrFail($id);
         $p->name = $request->input('name');
+        $p->sigla = $request->input('sigla');
 
         
         if ($p->save()) {

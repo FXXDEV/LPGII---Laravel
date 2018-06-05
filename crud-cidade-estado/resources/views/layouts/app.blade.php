@@ -19,13 +19,17 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <script>
+       
+    </script>
 </head>
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    Início <!-- {{ config('app.name', 'Laravel') }} -->
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -54,9 +58,25 @@
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
+                                     </a>
+                                    <a class="dropdown-item" href="/states"
+                                    onclick="event.preventDefault();
+                                                  document.getElementById('edit-form').submit();">
+                                     {{ __('states') }}
+                                    </a>
+                                    <a class="dropdown-item" href="/cities"
+                                    onclick="event.preventDefault();
+                                                document.getElementById('get-form').submit();">
+                                    {{ __('cities') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                                    <form id="edit-form" action="/states"  style="display: none;">
+                                        @csrf
+                                    </form>
+                                    <form id="get-form" action="/cities"  style="display: none;">
                                         @csrf
                                     </form>
                                 </div>

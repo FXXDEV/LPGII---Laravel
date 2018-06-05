@@ -26,6 +26,11 @@ $state = State::all();
 
                         <br /><br />
 
+
+                        {{ Form::label('sig', 'Sigla') }}
+                        {{ Form::text('sigla',$states->sigla) }}
+
+                        <br/>
                         {{ Form::submit('Salvar') }}
 
                     {!! Form::close() !!}

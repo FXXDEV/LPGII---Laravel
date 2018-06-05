@@ -25,7 +25,9 @@ class CityController extends Controller
 
     public function create() 
     {
-        return view('cities.new');
+        $states = State::all();        
+        return view('cities/new', ['states' => $states]);
+    
     }
 
     public function store(Request $request) 
@@ -33,6 +35,7 @@ class CityController extends Controller
         $p = new City;
         $p->name = $request->input('nameCity');
         $p->state = $request->get('nameState');
+        $p->hab = $request->get('hab');
         $p->state_id = 0;
         $p->state_type= 0;
         
@@ -47,14 +50,16 @@ class CityController extends Controller
 
     public function edit($id) {
         $city = City::findOrFail($id);
+        $states = State::all(); 
 
-        return view('cities.edit', ['city' => $city]);
+        return view('cities.edit', ['city' => $city],['states'=>$states]);
     }
 
     public function update(Request $request, $id) {
         $p = City::findOrFail($id);
         $p->name = $request->input('nameCity');
         $p->state = $request->input('nameState');
+        $p->hab = $request->input('hab');
         
         if ($p->save()) {
             \Session::flash('status', 'Cidade atualizada com sucesso.');

@@ -19,6 +19,7 @@ class City extends Migration
             $table->string('name')->unique();
             $table->morphs('state');
             $table->string('state')->references('name')->on('states');
+            $table->string('hab');
             $table->timestamps();
         });
     }

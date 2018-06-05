@@ -22,6 +22,11 @@
                         {{ Form::text('nameState') }}
 
                         <br /><br />
+
+                        {{ Form::label('sig', 'Sigla') }}
+                        {{ Form::text('sigla') }}
+
+                        <br/>
                         {{ Form::submit('Salvar') }}
 
                     {!! Form::close() !!}

@@ -21,6 +21,7 @@
                         <tr>
                             <th>ID</th>
                             <th>Cidade</th>
+                            <th>Habitantes</th>
                             <th>Estado</th>
                             <th>Ações</th>
                         </tr>
@@ -29,12 +30,13 @@
                             <tr>
                                 <td>{{ $p->id }}</td>
                                 <td>{{ $p->name }}</td>
+                                <td>{{ $p->hab }}</td>
                                 <td>{{ $p->state }}</td>
                                 <td>
                                     <a href="/cities/{{ $p->id }}/edit" class="btn btn-warning">Editar</a>
 
                                     {!! Form::open(['url' => "/cities/$p->id", 'method' => 'delete']) !!}
-                                        {{ Form::submit('Deletar', null, ['class' => 'btn btn-danger']) }}
+                                        {{ Form::submit('Deletar',['class' => 'btn btn-danger']) }}
                                     {!! Form::close() !!}
                                 </td>
                             </tr>

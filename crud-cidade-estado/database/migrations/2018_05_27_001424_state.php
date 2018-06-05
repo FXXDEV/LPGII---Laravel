@@ -16,6 +16,7 @@ class State extends Migration
         Schema::create('states', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->unique();
+            $table->string('sigla')->unique();
             $table->timestamps();
         });
     }

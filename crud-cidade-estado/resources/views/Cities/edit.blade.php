@@ -1,10 +1,4 @@
 @extends('layouts.app')
-
-<?php
-use App\State;
-$state = State::all();
-?>
-
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -23,18 +17,32 @@ $state = State::all();
 
                     {!! Form::open(['url' => "/cities/$city->id", 'method' => 'put']) !!}
                         
-                        {{ Form::label('nome', 'Nome') }}
-                        {{ Form::text('nameCity', $city->name) }}
+                        {{ Form::label('nameCity', 'Nome', ['class' => 'col-sm-2 col-form-label col-form-label-sm']) }}
+                        {{ Form::text('nameCity',$city->name,['class' => 'col-sm-2 col-form-label col-form-label-sm']) }}
+
 
                         <br />
-                        <select name="nameState" multiple>
-                            @foreach ($state as $s)
-                                <option  value="{{ $s->name }}">{{ $s->name }}</option>
-                            @endforeach
-                        </select>
+                        
+                        {{ Form::label('hab','Quantidade de habitantes',['class' => 'col-sm-2 col-form-label col-form-label-sm']) }}
+                        {{ Form::text('hab'),$city->hab,['class' => 'col-sm-2 col-form-label col-form-label-sm'] }}
+                       
+                        
+                       <div class="form-group row">
+                                {{ Form::label('estado', 'Selecione um estado:', ['class' => 'col-sm-2 col-form-label col-form-label-sm']) }}
+                                <div class="col-sm-10">
+                                        <select name="nameState">';
+                                                <option>Selecione...</option>
+                                                @foreach($states as $s)
+                                                <option value="{{$s->name}}"> {{$s->name}} </option>
+                                                @endforeach
+                                        </select>
+                                        
+                                 </div>
+                        </div>  
                 
 
-                        <br />
+                        <br/>
+                        
 
                         {{ Form::submit('Salvar') }}
 
